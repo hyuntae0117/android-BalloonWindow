@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Daebak STYLE GUIDE-->
+    <color name="grey_9f9f9f">#9f9f9f</color>
+    <color name="grey_cccccc">#cccccc</color>
+    <color name="grey_c0c0c0">#c0c0c0</color>
+    <color name="white_fafafa">#fafafa</color>
+    <color name="grey_f5f5f5">#f5f5f5</color>
+    <color name="grey_818181">#818181</color>
+    <color name="grey_e0e0e0">#e0e0e0</color>
+    <color name="black_333333">#333333</color>
+    <color name="black_4c4c4c">#4c4c4c</color>
+    <color name="blue_bedffe">#bedffe</color>
+    <color name="blue_64bbff">#64bbff</color>
+    <color name="blue_30a4ff">#30a4ff</color>
+    <color name="grey_e8e8e8">#e8e8e8</color>
+    <color name="yellow_ffd545">#ffd545</color>
+    <color name="yellow_fffbef">#fffbef</color>
+    <color name="yellow_f79b00">#f79b00</color>
+    <color name="red_ffe8e8">#ffe8e8</color>
+    <color name="yellow_ffb300">#ffb300</color>
+    <color name="red_fe7b67">#fe7b67</color>
+    <color name="red_dd2c00">#dd2c00</color>
+    <color name="red_ffc6bc">#ffc6bc</color>
+    <color name="white_ffffff">#ffffff</color>
+    <color name="white_ccffffff">#ccffffff</color>
+    <color name="white_c0ffffff">#c0ffffff</color>
+    <color name="black50_000000">#80000000</color>
+    <color name="blackc0_000000">#c0000000</color>
+    <color name="green_00c853">#00c853</color>
+
+
+    <color name="colorPrimary">#0ddbf2</color>
+    <color name="colorPrimaryDark">@color/black_4c4c4c</color>
+    <color name="colorAccent">#ff766b</color>
+
+    <color name="brown_grey">#9f9f9f</color>
+    <color name="very_light_pink">#ffe8e8</color>
+    <color name="light_peach">#ffc6bc</color>
+</resources>
