@@ -6,7 +6,7 @@
 
 ## Download
 
-```kotlin
+```gradle
 allprojects {
     repositories {
         ...
