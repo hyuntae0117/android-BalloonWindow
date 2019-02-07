@@ -1,7 +1,9 @@
 package com.ht.example.balloonwindow
 
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.widget.TextView
 import com.ht.balloonwindow.BalloonWindow
 import kotlinx.android.synthetic.main.activity_main.*
@@ -14,20 +16,22 @@ class MainActivity : AppCompatActivity() {
 
         aboveBtn.setOnClickListener {
             val view = TextView(this)
-            view.text = "position:above\noffset:-35"
+            view.text = "position:above\noffset:-35\nballoonColor: #F79b00"
 
             val window = BalloonWindow(this, targetView, BalloonWindow.Position.above)
+            window.balloonColor = Color.parseColor("#f79b00")
             window.offset = -35
             window.show(view)
 
         }
         belowBtn.setOnClickListener {
             val view = TextView(this)
-            view.text = "position:below\noffset:55\nmargin:25"
+            view.text = "position:below\noffset:55\nmargin:25\nballoonColor: #f1f1f1"
 
             val window = BalloonWindow(this, targetView, BalloonWindow.Position.below)
             window.offset = 55
             window.margin = 25
+            window.balloonColor = Color.parseColor("#f1f1f1")
             window.show(view)
         }
         rightBtn.setOnClickListener {

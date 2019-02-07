@@ -1,6 +1,7 @@
 package com.ht.balloonwindow
 
 import android.content.Context
+import android.graphics.PorterDuff
 import android.graphics.drawable.ColorDrawable
 import android.support.constraint.ConstraintLayout
 import android.support.constraint.ConstraintSet
@@ -31,6 +32,8 @@ class BalloonWindow : PopupWindow {
     var paddingRight = 32.toPx()
     var paddingTop = 24.toPx()
     var paddingBottom = 24.toPx()
+
+    var balloonColor: Int? = null
 
     private var measuredContentsWidth: Int? = null
     private var measuredContentsHeight: Int? = null
@@ -145,6 +148,11 @@ class BalloonWindow : PopupWindow {
             LayoutInflater.from(context).inflate(R.layout.view_balloon, this, true)
             contentsLl.addView(view)
 
+            if (balloonColor != null) {
+                arrowTopIv.setColorFilter(balloonColor!!, PorterDuff.Mode.SRC_ATOP)
+                arrowRightIv.setColorFilter(balloonColor!!, PorterDuff.Mode.SRC_ATOP)
+                contentsLl.background.setColorFilter(balloonColor!!, PorterDuff.Mode.SRC_ATOP)
+            }
 
             val set = ConstraintSet()
             set.constrainWidth(R.id.arrowRightIv, ConstraintSet.WRAP_CONTENT)
