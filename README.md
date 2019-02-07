@@ -15,7 +15,7 @@ allprojects {
 }
 
 dependencies {
-    implementation 'com.github.hyuntae0117:android-BalloonWindow:0.1.2'
+    implementation 'com.github.hyuntae0117:android-BalloonWindow:0.1.3'
 }
 ```
 
