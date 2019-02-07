@@ -13,28 +13,41 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         aboveBtn.setOnClickListener {
-            val window = BalloonWindow(this, targetView, BalloonWindow.Position.above)
             val view = TextView(this)
-            view.text = "position:above"
+            view.text = "position:above\noffset:-35"
+
+            val window = BalloonWindow(this, targetView, BalloonWindow.Position.above)
+            window.offset = -35
             window.show(view)
 
         }
         belowBtn.setOnClickListener {
-            val window = BalloonWindow(this, targetView, BalloonWindow.Position.below)
             val view = TextView(this)
-            view.text = "position:below"
+            view.text = "position:below\noffset:55\nmargin:25"
+
+            val window = BalloonWindow(this, targetView, BalloonWindow.Position.below)
+            window.offset = 55
+            window.margin = 25
             window.show(view)
         }
         rightBtn.setOnClickListener {
-            val window = BalloonWindow(this, targetView, BalloonWindow.Position.right)
             val view = TextView(this)
-            view.text = "position:right"
+            view.text = "position:right\noffset:10\npaddingTop:5\npaddtingBottom:5\npaddingRight:5\npaddingLeft:5"
+
+            val window = BalloonWindow(this, targetView, BalloonWindow.Position.right)
+            window.offset = 10
+            window.paddingTop = 5
+            window.paddingBottom = 5
+            window.paddingLeft = 5
+            window.paddingRight = 5
             window.show(view)
         }
         leftBtn.setOnClickListener {
-            val window = BalloonWindow(this, targetView, BalloonWindow.Position.left)
             val view = TextView(this)
-            view.text = "position:left"
+            view.text = "position:left\noffset:-10"
+
+            val window = BalloonWindow(this, targetView, BalloonWindow.Position.left)
+            window.offset = -10
             window.show(view)
         }
     }

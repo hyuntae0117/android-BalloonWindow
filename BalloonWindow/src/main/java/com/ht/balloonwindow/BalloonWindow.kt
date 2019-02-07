@@ -100,7 +100,7 @@ class BalloonWindow : PopupWindow {
         var (xPos, yPos) = getAbsolutePosition(targetView)
         val pivotX: Float
         val pivotY: Float
-
+        val margin = margin.toPx()
         val offset = offset.toPx()
         when(position) {
             Position.below -> {
