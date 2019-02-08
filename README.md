@@ -15,13 +15,13 @@ allprojects {
 }
 
 dependencies {
-    implementation 'com.github.hyuntae0117:android-BalloonWindow:0.1.3'
+    implementation 'com.github.hyuntae0117:android-BalloonWindow:0.1.4'
 }
 ```
 
 ## Usage
 
-### basic usage
+### Basic usage
 ```kotlin
 val view = TextView(this)
 view.text = "position:below"
@@ -33,7 +33,7 @@ window.margin = 10
 window.show(view)
 ```
 
-### position
+### Position
 There are four types of positions
 ```kotlin
 val window = BalloonWindow(.., .., position: Position)
@@ -43,12 +43,26 @@ val window = BalloonWindow(.., .., position: Position)
 
 - **Position.below**: will appear below the target
 
-- **position.right**: will apper right hand side of the target
+- **Position.right**: will apper right hand side of the target
 
-- **position.left**: will appear left hand side of the target
+- **Position.left**: will appear left hand side of the target
 
 ### offset
 
 ### padding
 
-### 
+### BalloonWindowListener
+You can catch when BalloonWindow
+```kotlin
+val window = BalloonWindow(.., .., ..)
+window.setBalloonListener(object: BalloonWindowListener {
+  ...
+})
+```
+- **willAppear(window: BalloonWindow)**
+
+- **willDisappear(window: BalloonWindow)**
+
+- **didAppear(window: BalloonWindow)**
+
+- **didDisappear(window: BalloonWindow)**
