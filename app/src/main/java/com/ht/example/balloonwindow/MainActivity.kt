@@ -1,12 +1,18 @@
 package com.ht.example.balloonwindow
 
+import android.animation.ValueAnimator
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.util.Log
 import android.widget.TextView
 import com.ht.balloonwindow.BalloonWindow
+import com.ht.balloonwindow.BalloonWindowListener
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.math.PI
+import kotlin.math.sign
+import kotlin.math.sin
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,7 +29,22 @@ class MainActivity : AppCompatActivity() {
             window.offset = -35
             window.show(view)
 
+            val anim = ValueAnimator.ofFloat(0f, PI.toFloat())
+            anim.duration = 1500
+            anim.repeatCount = 3
+
+            window.setBalloonListener(object: BalloonWindowListener {
+                override fun didAppear(window: BalloonWindow) {
+                    anim.addUpdateListener {
+                        val value = it.animatedValue as Float
+                        val sign = sin(value)
+                        window.update(window.x, (window.y + (30 * sign)).toInt(), window.width, window.height)
+                    }
+                    anim.start()
+                }
+            })
         }
+
         belowBtn.setOnClickListener {
             val view = TextView(this)
             view.text = "position:below\noffset:55\nmargin:25\nballoonColor: #f1f1f1"

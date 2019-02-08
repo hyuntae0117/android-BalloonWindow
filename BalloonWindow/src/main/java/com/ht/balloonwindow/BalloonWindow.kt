@@ -35,8 +35,13 @@ class BalloonWindow : PopupWindow {
 
     var balloonColor: Int? = null
 
+    var x: Int = 0
+    var y: Int = 0
+
     private var measuredContentsWidth: Int? = null
     private var measuredContentsHeight: Int? = null
+
+    var listener: BalloonWindowListener? = null
 
     constructor(context: Context, targetView: View, position: Position, offset: Int = 0) : super(context) {
         this.context = context
@@ -49,6 +54,8 @@ class BalloonWindow : PopupWindow {
     }
 
     override fun dismiss() {
+        listener?.willDisappear(this)
+
         val animation = AlphaAnimation(1f, 0f)
         animation.duration = 100
         contentView.startAnimation(animation)
@@ -56,7 +63,9 @@ class BalloonWindow : PopupWindow {
             override fun onAnimationRepeat(p0: Animation?) {}
 
             override fun onAnimationEnd(p0: Animation?) {
-                exit()
+                super@BalloonWindow.dismiss()
+
+                listener?.didDisappear(this@BalloonWindow)
             }
 
             override fun onAnimationStart(p0: Animation?) {
@@ -64,11 +73,9 @@ class BalloonWindow : PopupWindow {
         })
     }
 
-    fun exit() {
-        super.dismiss()
-    }
-
     fun show(view: View) {
+        listener?.willAppear(this)
+
         contentView = BalloonView(context, view)
         val balloonView = (contentView as BalloonView)
         balloonView.contentsLl.setPadding(
@@ -82,6 +89,10 @@ class BalloonWindow : PopupWindow {
         paddingRight = right
         paddingTop = top
         paddingBottom = bottom
+    }
+
+    fun setBalloonListener(listener: BalloonWindowListener) {
+        this.listener = listener
     }
 
     private fun getAbsolutePosition(view: View): Pair<Int, Int> {
@@ -137,9 +148,22 @@ class BalloonWindow : PopupWindow {
 
         update(xPos, yPos, this@BalloonWindow.width, this@BalloonWindow.height)
 
+        x = xPos
+        y = yPos
         val anim = ScaleAnimation(0f, 1f, 0f, 1f, Animation.RELATIVE_TO_SELF, pivotX, Animation.RELATIVE_TO_SELF, pivotY)
         anim.duration = 300
         contentView.startAnimation(anim)
+        anim.setAnimationListener(object: Animation.AnimationListener{
+            override fun onAnimationStart(p0: Animation?) {
+            }
+
+            override fun onAnimationRepeat(p0: Animation?) {
+            }
+
+            override fun onAnimationEnd(p0: Animation?) {
+                listener?.didAppear(this@BalloonWindow)
+            }
+        })
     }
 
     inner class BalloonView: ConstraintLayout {
@@ -176,6 +200,7 @@ class BalloonWindow : PopupWindow {
                     else
                         set.connect(R.id.contentsLl, ConstraintSet.RIGHT, R.id.container, ConstraintSet.RIGHT)
                     set.applyTo(container)
+
 
                     arrowTopIv.visibility = View.VISIBLE
                     arrowRightIv.visibility = View.GONE
