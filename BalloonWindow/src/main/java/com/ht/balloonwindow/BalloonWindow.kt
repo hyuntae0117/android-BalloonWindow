@@ -16,7 +16,7 @@ import android.widget.PopupWindow
 import kotlinx.android.synthetic.main.view_balloon.view.*
 
 
-class BalloonWindow : PopupWindow {
+open class BalloonWindow : PopupWindow {
     enum class Position {
         above, left, right, below
     }
@@ -250,5 +250,3 @@ class BalloonWindow : PopupWindow {
         }
     }
 }
-
-
