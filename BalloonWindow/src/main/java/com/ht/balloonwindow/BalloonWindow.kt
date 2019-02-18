@@ -73,7 +73,7 @@ open class BalloonWindow : PopupWindow {
         })
     }
 
-    fun show(view: View) {
+    open fun show(view: View) {
         listener?.willAppear(this)
 
         contentView = BalloonView(context, view)
@@ -104,7 +104,7 @@ open class BalloonWindow : PopupWindow {
         return Pair(xPos, yPos)
     }
 
-    fun onBalloonMeasured() {
+    open fun onBalloonMeasured() {
         if (measuredContentsWidth == contentView.measuredWidth && measuredContentsHeight == contentView.measuredHeight) {
             return
         }
