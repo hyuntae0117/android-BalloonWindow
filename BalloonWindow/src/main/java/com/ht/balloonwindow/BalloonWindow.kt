@@ -1,5 +1,6 @@
 package com.ht.balloonwindow
 
+import android.app.ActionBar
 import android.content.Context
 import android.graphics.PorterDuff
 import android.graphics.drawable.ColorDrawable
@@ -9,10 +10,12 @@ import android.support.v4.content.ContextCompat
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import android.widget.PopupWindow
+import android.widget.TextView
 import kotlinx.android.synthetic.main.view_balloon.view.*
 
 
@@ -81,6 +84,9 @@ open class BalloonWindow : PopupWindow {
         balloonView.contentsLl.setPadding(
                 paddingLeft, paddingTop, paddingRight, paddingBottom
         )
+
+        height = ViewGroup.LayoutParams.WRAP_CONTENT
+        width = ViewGroup.LayoutParams.WRAP_CONTENT
         showAtLocation(contentView, Gravity.NO_GRAVITY, 0, 0)
     }
 
