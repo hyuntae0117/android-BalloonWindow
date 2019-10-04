@@ -101,7 +101,7 @@ open class BalloonWindow : PopupWindow {
         this.listener = listener
     }
 
-    private fun getAbsolutePosition(view: View): Pair<Int, Int> {
+    open fun getTargetAbsolutePosition(view: View): Pair<Int, Int> {
         val locations = IntArray(2)
         view.getLocationOnScreen(locations)
         val xPos = locations[0]
@@ -117,7 +117,7 @@ open class BalloonWindow : PopupWindow {
         measuredContentsWidth = contentView.measuredWidth
         measuredContentsHeight = contentView.measuredHeight
 
-        var (xPos, yPos) = getAbsolutePosition(targetView)
+        var (xPos, yPos) = getTargetAbsolutePosition(targetView)
         val pivotX: Float
         val pivotY: Float
         val margin = margin.toPx()
