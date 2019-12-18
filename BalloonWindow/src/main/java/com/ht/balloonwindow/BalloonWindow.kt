@@ -4,6 +4,7 @@ import android.app.ActionBar
 import android.content.Context
 import android.graphics.PorterDuff
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.support.constraint.ConstraintLayout
 import android.support.constraint.ConstraintSet
 import android.support.v4.content.ContextCompat
@@ -37,6 +38,7 @@ open class BalloonWindow : PopupWindow {
     var paddingBottom = 24.toPx()
 
     var balloonColor: Int? = null
+    var balloonDrawable: Drawable? = null
 
     var x: Int = 0
     var y: Int = 0
@@ -177,6 +179,10 @@ open class BalloonWindow : PopupWindow {
         constructor(context: Context, view: View): super(context) {
             LayoutInflater.from(context).inflate(R.layout.view_balloon, this, true)
             contentsLl.addView(view)
+
+            if (balloonDrawable != null) {
+                contentsLl.background = balloonDrawable
+            }
 
             if (balloonColor != null) {
                 arrowTopIv.setColorFilter(balloonColor!!, PorterDuff.Mode.SRC_ATOP)

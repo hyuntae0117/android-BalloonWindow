@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         }
         rightBtn.setOnClickListener {
             val view = TextView(this)
-            view.text = "position:right\noffset:10\npaddingTop:5\npaddtingBottom:5\npaddingRight:5\npaddingLeft:5"
+            view.text = "position:right\noffset:10\npaddingTop:5\npaddtingBottom:5\npaddingRight:5\npaddingLeft:5\nradius_20 drawable"
 
             val window = BalloonWindow(this, targetView, BalloonWindow.Position.right)
             window.offset = 10
@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity() {
             window.paddingBottom = 5
             window.paddingLeft = 5
             window.paddingRight = 5
+            window.balloonDrawable = ContextCompat.getDrawable(this, R.drawable.bg_blue_30a4ff_round_20)
             window.show(view)
         }
         leftBtn.setOnClickListener {
