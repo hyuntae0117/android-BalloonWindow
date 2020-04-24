@@ -16,9 +16,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_blue_30a4ff_round"
-                android:elevation="8dp"
-                android:outlineAmbientShadowColor="@color/red_dd2c00"
-                android:outlineSpotShadowColor="@color/red_dd2c00"
                 android:orientation="vertical">
 
         </LinearLayout>
@@ -27,14 +24,12 @@
                 android:id="@+id/arrowRightIv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:elevation="8dp"
                 android:src="@drawable/ic_balloon_arrow_right"/>
 
         <ImageView
                 android:id="@+id/arrowTopIv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:elevation="8dp"
                 android:src="@drawable/ic_balloon_arrow_top"/>
 
     </android.support.constraint.ConstraintLayout>

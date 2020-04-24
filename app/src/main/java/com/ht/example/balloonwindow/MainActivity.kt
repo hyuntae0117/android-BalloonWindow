@@ -9,6 +9,7 @@ import android.util.Log
 import android.widget.TextView
 import com.ht.balloonwindow.BalloonWindow
 import com.ht.balloonwindow.BalloonWindowListener
+import com.ht.balloonwindow.toPx
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.math.PI
 import kotlin.math.sign
@@ -24,14 +25,16 @@ class MainActivity : AppCompatActivity() {
             val view = TextView(this)
             view.text = "position:above\noffset:-35\nballoonColor: #F79b00"
 
-            val window = BalloonWindow(this, targetView, BalloonWindow.Position.above)
+            val window = BalloonWindow(this, it, BalloonWindow.Position.above)
             window.balloonColor = Color.parseColor("#f79b00")
             window.offset = -35
+            window.elevation = 8f.toPx()
             window.show(view)
 
             val anim = ValueAnimator.ofFloat(0f, PI.toFloat())
             anim.duration = 1500
             anim.repeatCount = 3
+
 
             window.setBalloonListener(object: BalloonWindowListener {
                 override fun didAppear(window: BalloonWindow) {
@@ -49,31 +52,34 @@ class MainActivity : AppCompatActivity() {
             val view = TextView(this)
             view.text = "position:below\noffset:55\nmargin:25\nballoonColor: #f1f1f1"
 
-            val window = BalloonWindow(this, targetView, BalloonWindow.Position.below)
+            val window = BalloonWindow(this, it, BalloonWindow.Position.below)
             window.offset = 55
             window.margin = 25
             window.balloonColor = Color.parseColor("#f1f1f1")
+            window.elevation = 8f.toPx()
             window.show(view)
         }
         rightBtn.setOnClickListener {
             val view = TextView(this)
             view.text = "position:right\noffset:10\npaddingTop:5\npaddtingBottom:5\npaddingRight:5\npaddingLeft:5\nradius_20 drawable"
 
-            val window = BalloonWindow(this, targetView, BalloonWindow.Position.right)
+            val window = BalloonWindow(this, it, BalloonWindow.Position.right)
             window.offset = 10
             window.paddingTop = 5
             window.paddingBottom = 5
             window.paddingLeft = 5
             window.paddingRight = 5
             window.balloonDrawable = ContextCompat.getDrawable(this, R.drawable.bg_blue_30a4ff_round_20)
+            window.elevation = 8f.toPx()
             window.show(view)
         }
         leftBtn.setOnClickListener {
             val view = TextView(this)
             view.text = "position:left\noffset:-10"
 
-            val window = BalloonWindow(this, targetView, BalloonWindow.Position.left)
+            val window = BalloonWindow(this, it, BalloonWindow.Position.left)
             window.offset = -10
+            window.elevation = 8f.toPx()
             window.show(view)
         }
     }

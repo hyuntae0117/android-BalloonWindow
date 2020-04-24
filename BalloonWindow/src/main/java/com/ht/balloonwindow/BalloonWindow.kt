@@ -32,7 +32,6 @@ open class BalloonWindow : PopupWindow {
     var arrowHeight = 12.toPx()
     var offset: Int
     var margin: Int = 4.toPx()
-
     var paddingLeft = 32.toPx()
     var paddingRight = 32.toPx()
     var paddingTop = 24.toPx()
@@ -43,6 +42,9 @@ open class BalloonWindow : PopupWindow {
 
     var x: Int = 0
     var y: Int = 0
+
+    private var shadowElevation: Float = 0f
+    val shadowMargin = 30.toPx()
 
     private var measuredContentsWidth: Int? = null
     private var measuredContentsHeight: Int? = null
@@ -56,7 +58,13 @@ open class BalloonWindow : PopupWindow {
         this.targetView = targetView
         isOutsideTouchable = true
         isFocusable = true
+        isClippingEnabled = false
         setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(context, android.R.color.transparent)))
+    }
+
+    override fun setElevation(elevation: Float) {
+        super.setElevation(elevation)
+        shadowElevation = elevation
     }
 
     override fun dismiss() {
@@ -261,16 +269,21 @@ open class BalloonWindow : PopupWindow {
                 }
             }
 
-            val a = contentsLl.layoutParams as MarginLayoutParams
-            a.setMargins(101,101,101,101)
+            val lp = contentsLl.layoutParams as MarginLayoutParams
+            lp.setMargins(shadowMargin, shadowMargin, shadowMargin, shadowMargin)
 
             when(position) {
-                Position.below -> contentsLl.y = contentsLl.y - 101 + arrowHeight
-                Position.above -> contentsLl.y = contentsLl.y + 101 - arrowHeight
-                Position.right -> contentsLl.x = contentsLl.x - 101 + arrowHeight
-                Position.left -> contentsLl.x = contentsLl.x + 101 - arrowHeight
+                Position.below -> contentsLl.y = contentsLl.y - shadowMargin + arrowHeight
+                Position.above -> contentsLl.y = contentsLl.y + shadowMargin - arrowHeight
+                Position.right -> contentsLl.x = contentsLl.x - shadowMargin + arrowHeight
+                Position.left -> contentsLl.x = contentsLl.x + shadowMargin - arrowHeight
             }
             contentsLl.requestLayout()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                contentsLl.elevation = shadowElevation
+                arrowRightIv.elevation = shadowElevation
+                arrowTopIv.elevation = shadowElevation
+            }
 
         }
 
