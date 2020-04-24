@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.PorterDuff
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.support.constraint.ConstraintLayout
 import android.support.constraint.ConstraintSet
 import android.support.v4.content.ContextCompat
@@ -198,7 +199,13 @@ open class BalloonWindow : PopupWindow {
             set.constrainWidth(R.id.contentsLl, ConstraintSet.WRAP_CONTENT)
             set.constrainHeight(R.id.contentsLl, ConstraintSet.WRAP_CONTENT)
 
+            set.connect(R.id.contentsLl, ConstraintSet.LEFT, R.id.container, ConstraintSet.LEFT)
+            set.connect(R.id.contentsLl, ConstraintSet.RIGHT, R.id.container, ConstraintSet.RIGHT)
+            set.connect(R.id.contentsLl, ConstraintSet.BOTTOM, R.id.container, ConstraintSet.BOTTOM)
+            set.connect(R.id.contentsLl, ConstraintSet.TOP, R.id.container, ConstraintSet.TOP)
             val offset = offset.toPx()
+
+
 
             when(position) {
                 Position.below -> {
@@ -253,6 +260,17 @@ open class BalloonWindow : PopupWindow {
                     arrowRightIv.visibility = View.VISIBLE
                 }
             }
+
+            val a = contentsLl.layoutParams as MarginLayoutParams
+            a.setMargins(101,101,101,101)
+
+            when(position) {
+                Position.below -> contentsLl.y = contentsLl.y - 101 + arrowHeight
+                Position.above -> contentsLl.y = contentsLl.y + 101 - arrowHeight
+                Position.right -> contentsLl.x = contentsLl.x - 101 + arrowHeight
+                Position.left -> contentsLl.x = contentsLl.x + 101 - arrowHeight
+            }
+            contentsLl.requestLayout()
 
         }
 

@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.constraint.ConstraintLayout
             android:id="@+id/container"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
                 android:id="@+id/contentsLl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_blue_30a4ff_round"
+                android:elevation="8dp"
+                android:outlineAmbientShadowColor="@color/red_dd2c00"
+                android:outlineSpotShadowColor="@color/red_dd2c00"
                 android:orientation="vertical">
 
         </LinearLayout>
@@ -19,12 +27,14 @@
                 android:id="@+id/arrowRightIv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:elevation="8dp"
                 android:src="@drawable/ic_balloon_arrow_right"/>
 
         <ImageView
                 android:id="@+id/arrowTopIv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:elevation="8dp"
                 android:src="@drawable/ic_balloon_arrow_top"/>
 
     </android.support.constraint.ConstraintLayout>
